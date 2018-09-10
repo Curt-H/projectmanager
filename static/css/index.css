@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+div.wonder-form {
+    width: 300px;
+    height: 200px;
+    float: left;
+    border: solid 2px;
+    margin: 5px;
+    padding: 5px;
+}
+
+div.todo-cell {
+    border: solid 1px;
+    margin: 5px;
+    padding: 5px;
+}
+
+div.todo-edit-input {
+    margin: 5px;
+    padding: 5px;
+}
