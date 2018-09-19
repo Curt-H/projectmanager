@@ -1,8 +1,12 @@
 import json
-import os
 
 
 def load(fname):
+    """
+    从txt文件加载JSON数据
+    :param fname: 文件名
+    :return: JSON字符串
+    """
     with open(fname, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -14,7 +18,7 @@ def save(fname, data):
     将数据以json格式输出
     :param fname: 文件名
     :param data: 数据
-    :return:  
+    :return: 0
     """
     with open(fname, 'w', encoding='utf-8') as f:
         json.dump(data, f)
@@ -24,13 +28,25 @@ def save(fname, data):
 
 class BaseModel(object):
     def __init__(self, form):
+        """
+        Model的基类
+        :param form:表单数据
+        """
         self.id = form.get('id', None)
 
     def json(self):
+        """
+        将类的属性以字典形式返回
+        :return:
+        """
         return self.__dict__
 
     @classmethod
     def db_path(cls):
+        """
+        数据存放的位置
+        :return: txt的文件位置
+        """
         path = f'../data/{cls.__name__}.txt'
 
         return path
@@ -51,7 +67,6 @@ class BaseModel(object):
         将数据保存到文本
         :return:
         """
-        is_new = False
         ms = self.all()
 
         # 确定id, 如果为空, 则是上一位ID号加1, 反则更新对应数据
@@ -62,17 +77,94 @@ class BaseModel(object):
                 self.id = ms[-1].id + 1
             ms.append(self)
         else:
-            for m in ms:
+            for i, m in enumerate(ms):
                 if self.id == m.id:
-                    m = self
-                else:
-                    is_new = True
+                    ms[i] = self
 
         data = [m.json() for m in ms]
-        print(data)
-        state = save(self.db_path(), data)
+        save(self.db_path(), data)
 
-        if state == 0:
-            return 0
-        else:
-            return 1
+        return self
+
+    @classmethod
+    def find_by(cls, **kwargs):
+        """
+        根据条件查找对应的类数据
+        :param kwargs: 不定关键字参数, 可以引用多个条件
+        :return: 查找的类, 没找到就返回None
+        """
+        ms = cls.all()
+        is_what_we_find = True
+
+        for m in ms:
+            for k, v in kwargs.items():
+                if getattr(m, k, None) != v:
+                    is_what_we_find = False
+
+            if is_what_we_find:
+                return m
+            else:
+                is_what_we_find = True
+
+        return None
+
+    @classmethod
+    def find_all(cls, **kwargs):
+        """
+        查找符合条件的所有实例
+        :param kwargs:
+        :return: 查找的类list, 没找到就返回空list
+        """
+        ms = cls.all()
+        is_what_we_find = True
+        result = []
+
+        for m in ms:
+            for k, v in kwargs.items():
+                if getattr(m, k, None) != v:
+                    is_what_we_find = False
+
+            if is_what_we_find:
+                result.append(m)
+            else:
+                is_what_we_find = True
+
+        return result
+
+    @classmethod
+    def delete_by(cls, **kwargs):
+        """
+        删除符合条件的所有实例
+        :param kwargs:
+        :return: '删除完成'
+        """
+        ms = cls.all()
+        delete_list = []
+
+        for i, m in enumerate(ms):
+            is_what_we_find = False
+            for k, v in kwargs.items():
+                if getattr(m, k, None) == v and hasattr(m, k):
+                    is_what_we_find = True
+
+            if is_what_we_find:
+                delete_list.append(m)
+
+        for m in delete_list:
+            ms.remove(m)
+
+        data = [m.json() for m in ms]
+        save(cls.db_path(), data)
+        return '删除完成'
+
+    @classmethod
+    def new(cls, form):
+        """
+        新建一个实例并储存到数据文件里
+        :param form:
+        :return:
+        """
+        m = cls(form)
+        m = m.save()
+
+        return m
