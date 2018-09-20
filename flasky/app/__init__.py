@@ -1,11 +1,13 @@
 from flask import Flask
 from flasky.app.util import log
 from flasky.app.main import main as main_route
+from flasky.app.main.public import public as public_route
 
 
 def create_app():
     app = Flask(__name__)
     app.register_blueprint(main_route)
+    app.register_blueprint(public_route)
     return app
 
 

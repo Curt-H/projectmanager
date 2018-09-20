@@ -1,0 +1,22 @@
+.title {
+    color: #e00;
+    text-align: center;
+}
+
+.siderbar {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.tasks {
+    margin-left: 25%;
+    text-align: center;
+}
+
+.panel {
+    border: 1px solid;
+    margin: 10px;
+    padding: 3%;
+}
