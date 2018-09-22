@@ -10,8 +10,12 @@ def format_time(now=localtime(), time_format=''):
 def log(*args, **kwargs):
     dt = format_time()
     print(dt)
-    print(*args, **kwargs)
+    print('[arguements:]', *args, sep='\n')
+    print('[keyword arguements:]', *kwargs.items(), sep='\n')
+    print('=' * 50)
 
     with open('log.txt', 'a+') as f:
         print(dt, file=f)
-        print(*args, **kwargs, file=f)
+        print('[arguements:]', *args, sep='\n', file=f)
+        print('[keyword arguements:]', *kwargs.items(), sep='\n', file=f)
+        print('=' * 50, file=f)
