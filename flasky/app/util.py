@@ -1,10 +1,14 @@
 from time import time, localtime, strftime
 
 
+def format_time(now=localtime(), time_format=''):
+    if time_format == '':
+        time_format = '[%Y|%m|%d|%a|%H:%M:%S]:'
+    return strftime(time_format, now)
+
+
 def log(*args, **kwargs):
-    time_format = '[%Y|%m|%d|%a|%H:%M:%S]:'
-    time_now = localtime(int(time()))
-    dt = strftime(time_format, time_now)
+    dt = format_time()
     print(dt)
     print(*args, **kwargs)
 
