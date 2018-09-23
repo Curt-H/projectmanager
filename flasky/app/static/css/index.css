@@ -1,0 +1,36 @@
+.title {
+    color: #e00;
+    text-align: center;
+    font-size: 2rem;
+    display: block;
+}
+
+.siderbar {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.tasks {
+    margin-left: 25%;
+}
+
+.panel {
+    border: 1px solid;
+    margin: 10px;
+    padding: 3%;
+}
+
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: space-around;
+    background: black;
+}
+
+.flex-item {
+    background: lightgray;
+}

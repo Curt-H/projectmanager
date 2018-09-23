@@ -1,0 +1,33 @@
+.tasks {
+    padding: 1rem;
+}
+
+legend {
+    font-weight: 800;
+}
+
+textarea {
+    resize: none;
+}
+
+label {
+    display: block;
+}
+
+form {
+    margin: 0 auto;
+    width: 80%;
+}
+
+fieldset {
+}
+
+#id-project,
+#id-deadline,
+#id-content {
+    margin: 0 auto;
+}
+
+.buttons {
+    padding: 0.5rem;
+}
