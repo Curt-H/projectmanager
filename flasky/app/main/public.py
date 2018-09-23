@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template
+
+from flasky.app import log
 from flasky.app.models.task import Task
 
 public = Blueprint('public', __name__)
@@ -12,4 +14,5 @@ def index():
 @public.route('/now', methods=['GET'])
 def task_now():
     ts = Task.all()
-    return ts
+    log(tasks=ts)
+    return str(ts)
