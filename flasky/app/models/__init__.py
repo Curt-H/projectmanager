@@ -1,6 +1,8 @@
 import json
 import os
 
+from flasky.app import log
+
 
 def load(fname):
     """
@@ -9,7 +11,10 @@ def load(fname):
     :return: JSON字符串
     """
     # Make sure if the file exists
-    if not os.path.exists(fname):
+    path = os.path.split(fname)[0]
+    if not os.path.exists(path):
+        log('原文件不存在, 准备创建')
+        os.makedirs(path)
         with open(fname, 'w', encoding='utf-8') as f:
             f.write('[]')
 
@@ -53,7 +58,7 @@ class BaseModel(object):
         数据存放的位置
         :return: txt的文件位置
         """
-        path = f'app/data/{cls.__name__}.txt'
+        path = f'data\\{cls.__name__}.txt'
 
         return path
 
