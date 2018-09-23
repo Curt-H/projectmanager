@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}新建{% endblock %}
+{% block body %}
+    <form action="{{ url_for('public.task_new_add') }}" method="post">
+        <label for="id-name">Name</label>
+        <input id='id-name' name="name" type="text">
+
+        <label for="id-age">Age</label>
+        <input id='id-age' name="age" type="text">
+
+        <button type="submit">Submit</button>
+        <button type="reset">reset</button>
+    </form>
+{% endblock %}
