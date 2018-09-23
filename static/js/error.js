@@ -1,1 +1,0 @@
-alert('Can not load js file!');
