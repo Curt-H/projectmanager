@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def load(fname):
@@ -7,6 +8,11 @@ def load(fname):
     :param fname: 文件名
     :return: JSON字符串
     """
+    # Make sure if the file exists
+    if not os.path.exists(fname):
+        with open(fname, 'w', encoding='utf-8') as f:
+            f.write('[]')
+
     with open(fname, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -47,7 +53,7 @@ class BaseModel(object):
         数据存放的位置
         :return: txt的文件位置
         """
-        path = f'../data/{cls.__name__}.txt'
+        path = f'app/data/{cls.__name__}.txt'
 
         return path
 
