@@ -14,7 +14,7 @@ def log(*args, **kwargs):
     print('[keyword arguements:]', *kwargs.items(), sep='\n')
     print('=' * 50)
 
-    with open('log.txt', 'a+') as f:
+    with open('log.txt', 'a+', encoding='utf-8') as f:
         print(dt, file=f)
         print('[arguements:]', *args, sep='\n', file=f)
         print('[keyword arguements:]', *kwargs.items(), sep='\n', file=f)
