@@ -1,15 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.5, maximum-scale=2.0"/>
-    {% block css %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menus-core-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menus-dropdown-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menus-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    {% block css %}
+    {% endblock %}
 </head>
+
 <body>
 <div class="siderbar pure-u-1-4 pure-u-md-1-4">
+    <div class="navbar pure-menu">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">Homepage</a></li>
+            <li class="pure-menu-item"><a href="{{ url_for('public.task_new_view') }}" class="pure-menu-link">New</a>
+            </li>
+        </ul>
+    </div>
     <h1 class="title">项目管理工具</h1>
     <h2 class="title">今日时间</h2>
 </div>

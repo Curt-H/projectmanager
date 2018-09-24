@@ -1,16 +1,3 @@
-.title {
-    color: #e00;
-    text-align: center;
-    font-size: 2rem;
-    display: block;
-}
-
-.siderbar {
-    background-color: black;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-}
 
 .tasks {
     margin-left: 25%;
