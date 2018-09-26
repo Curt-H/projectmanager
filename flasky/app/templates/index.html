@@ -13,15 +13,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="flex-container">
-        {% for i in range(10) %}
-            <div class="panel flex-item">
-                <p class="task-time">Test Panel {{ i }}</p>
-                <p class="task-title">Test Panel {{ i }}</p>
-                <p class="task-content">Test Panel {{ i }}</p>
+    <div id="taks-list" class="flex-container">
+        {% for task in tasks %}
+            <div class="panel flex-item" data-id="{{ task.id }}">
+                <p class="task-time">{{ task.time }}</p>
+                <p class="task-title"> {{ task.project }}</p>
+                <p class="task-content">Test Panel {{ task.content }}</p>
                 <button class="pure-button pure-button-primary" name="finished">FINISH</button>
                 <button class="pure-button pure-button-primary" name="cancle">CANCLE</button>
             </div>
         {% endfor %}
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/task.js') }}"></script>
 {% endblock %}

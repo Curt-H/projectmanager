@@ -7,12 +7,12 @@ from flask import Blueprint
 
 
 def convert_to_strtime(form):
-    strtime = [
+    strtime = (
         int(form['year']),
         int(form['month']),
         int(form['day']),
         0, 0, 0, 0, 0, 0
-    ]
+    )
 
     return strtime
 
