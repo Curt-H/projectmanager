@@ -150,8 +150,12 @@ class BaseModel(object):
         :param kwargs:
         :return: '删除完成'
         """
+        log('Delete by', kwargs)
         ms = cls.all()
         delete_list = []
+
+        if kwargs.get('id', 'None') != 'None':
+            kwargs['id'] = int(kwargs['id'])
 
         for i, m in enumerate(ms):
             is_what_we_find = False

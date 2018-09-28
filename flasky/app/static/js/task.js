@@ -26,7 +26,9 @@ let bindEventFinish = function () {
 
             let responseMsg = confirm('Really want to mark it as finished?\nYou can not reedit if you click yes');
             if (responseMsg) {
-                apiTaskFinish(data, function () {
+                log('Sending data')
+                apiTaskFinish(data, function (response) {
+                    log(response)
                     taskPanel.remove()
                 })
             }

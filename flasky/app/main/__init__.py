@@ -4,6 +4,7 @@ and public routers like index router could add below.
 But I recommended just add some tools here
 """
 from flask import Blueprint
+import json
 
 
 def convert_to_strtime(form):
@@ -15,6 +16,10 @@ def convert_to_strtime(form):
     )
 
     return strtime
+
+
+def load_form(form):
+    return json.loads(json.dumps(form))
 
 
 main = Blueprint('main', __name__)
