@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="taks-list" class="flex-container">
+    <div id="task-list" class="flex-container">
         {% for task in tasks %}
             <div class="panel flex-item" data-id="{{ task.id }}">
                 <p class="task-time">{{ task.time }}</p>
