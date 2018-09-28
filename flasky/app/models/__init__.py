@@ -15,6 +15,7 @@ def load(fname):
     if not os.path.exists(path):
         log('原文件不存在, 准备创建')
         os.makedirs(path)
+    if not os.path.exists(fname):
         with open(fname, 'w', encoding='utf-8') as f:
             f.write('[]')
 
