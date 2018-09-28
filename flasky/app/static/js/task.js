@@ -1,27 +1,41 @@
-let apiTaskAll = function (callback) {
-    let path = '/api/todo/all';
-    ajax('GET', path, '', callback)
+let apiTaskFinish = function (data, callback) {
+    let path = '/api/task/finish';
+    ajax('POST', path, data, callback)
 };
 
-let bindEvenFinish = function () {
+let bindEventFinish = function () {
     let taskList = e('#task-list');
 
     // Event trusteeship
     taskList.addEventListener('click', function (t) {
-        let self = t.target
-        log('The object clicked:', self)
+        let self = t.target;
 
         // Get task panel object
-        let taskPanel = self.closest('.panel')
-        log('The closest object:', taskPanel)
-        let taskId = taskPanel.dataset['Id']
-        log('Task ID:', taskId)
-    })
+        if (self.classList.contains('finish')) {
+            log('The object clicked:', self);
 
+            const taskPanel = self.closest('.panel');
+            log('The closest object:', taskPanel);
+
+            let taskId = taskPanel.dataset['id'];
+            log('Task ID:', taskId);
+
+            const data = {
+                id: taskId,
+            };
+
+            let responseMsg = confirm('Really want to mark it as finished?\nYou can not reedit if you click yes');
+            if (responseMsg) {
+                apiTaskFinish(data, function () {
+                    taskPanel.remove()
+                })
+            }
+        }
+    })
 };
 
 let __main = function () {
-    bindEvenFinish();
+    bindEventFinish();
 };
 
 __main();
