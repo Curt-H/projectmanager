@@ -7,6 +7,6 @@ class Task(BaseModel):
         super().__init__(form)
         self.project = form.get('project', '其他')
         self.content = form.get('content', '')
-        self.deadline = format_time(tuple(t.deadline), '%Y-%m-%d')
-        self.time = form.get('deadline', '未指定')
+        self.deadline = form.get('deadline', '未指定')
+        self.time = format_time(tuple(self.deadline), '%Y-%m-%d')
         self.finish = form.get('finish', False)
