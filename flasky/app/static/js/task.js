@@ -29,7 +29,6 @@ let bindEventFinish = function () {
                 log('Sending data')
                 apiTaskFinish(data, function (response) {
                     log(response)
-                    taskPanel.remove()
                 })
             }
         }

@@ -18,9 +18,15 @@
             <div class="panel flex-item" data-id="{{ task.id }}">
                 <p class="task-time">{{ task.time }}</p>
                 <p class="task-title"> {{ task.project }}</p>
-                <p class="task-content">Test Panel {{ task.content }}</p>
-                <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
-                <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
+                <p class="task-content">{{ task.content }}</p>
+                {% if task.finish %}
+                    <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
+                    <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
+
+                {% else %}
+                    <button class="finish pure-button pure-button-disabled" name="finished">FINISHED</button>
+                    <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

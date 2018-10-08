@@ -10,7 +10,8 @@ api_task = Blueprint('api_task', __name__)
 def api_task_finish():
     form = request.get_json()
     log(form, type(form))
-    Task.delete_by(id=form['id'])
+    task = Task.find_by(id=int(form['id']))
+    task.finish = True
 
     result = 'finished'
     return jsonify(result)
