@@ -29,6 +29,15 @@ let bindEventFinish = function () {
                 log('Sending data')
                 apiTaskFinish(data, function (response) {
                     log(response)
+                    let btn_finish = e('.finish', taskPanel)
+                    log('FINISH: ', btn_finish)
+                    btn_finish.classList.remove('pure-button-primary')
+                    btn_finish.classList.add('pure-button-disabled')
+
+                    let btn_cancle = e('.cancle', taskPanel)
+                    log('CANCLE:', btn_cancle)
+                    btn_cancle.classList.remove('pure-button-primary')
+                    btn_cancle.classList.add('pure-button-disabled')
                 })
             }
         }

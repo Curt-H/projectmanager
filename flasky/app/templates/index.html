@@ -20,12 +20,12 @@
                 <p class="task-title"> {{ task.project }}</p>
                 <p class="task-content">{{ task.content }}</p>
                 {% if task.finish %}
-                    <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
-                    <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
+                    <button class="finish pure-button pure-button-disabled" name="finished">FINISH</button>
+                    <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
 
                 {% else %}
-                    <button class="finish pure-button pure-button-disabled" name="finished">FINISHED</button>
-                    <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
+                    <button class="finish pure-button pure-button-primary" name="finished">FINISHED</button>
+                    <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
                 {% endif %}
             </div>
         {% endfor %}

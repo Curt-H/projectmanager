@@ -12,6 +12,7 @@ def api_task_finish():
     log(form, type(form))
     task = Task.find_by(id=int(form['id']))
     task.finish = True
+    task.save()
 
     result = 'finished'
     return jsonify(result)
