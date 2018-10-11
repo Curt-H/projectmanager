@@ -15,6 +15,7 @@ def load(fname):
     if not os.path.exists(path):
         log('原文件不存在, 准备创建')
         os.makedirs(path)
+    if not os.path.exists(fname):
         with open(fname, 'w', encoding='utf-8') as f:
             f.write('[]')
 
@@ -149,8 +150,12 @@ class BaseModel(object):
         :param kwargs:
         :return: '删除完成'
         """
+        log('Delete by', kwargs)
         ms = cls.all()
         delete_list = []
+
+        if kwargs.get('id', 'None') != 'None':
+            kwargs['id'] = int(kwargs['id'])
 
         for i, m in enumerate(ms):
             is_what_we_find = False
