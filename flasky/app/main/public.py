@@ -1,4 +1,5 @@
 import json
+import random
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from flasky.app.main import convert_to_strtime
@@ -12,7 +13,10 @@ public = Blueprint('public', __name__)
 def index():
     ts = Task.all()
     log(tasks=ts)
-    return render_template('index.html', tasks=ts)
+
+    # V is a temprary value to make browser don't cache js when developed
+    v = random.randint(0, 9999)
+    return render_template('index.html', tasks=ts, v=v)
 
 
 @public.route('/new', methods=['GET'])
