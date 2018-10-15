@@ -16,7 +16,7 @@
     <div id="task-list" class="flex-container">
         {% for task in tasks %}
             <div class="panel flex-item" data-id="{{ task.id }}">
-                <p class="task-time">{{ task.time }}</p>
+                <p class="task-time">[ID-{{ task.id }}]  {{ task.time }}</p>
                 <p class="task-title"> {{ task.project }}</p>
                 <p class="task-content">{{ task.content }}</p>
                 {% if task.finish %}

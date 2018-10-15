@@ -11,7 +11,10 @@ public = Blueprint('public', __name__)
 
 @public.route('/', methods=['GET'])
 def index():
-    ts = Task.all()
+    tasks = Task.all()
+    ts = []
+    for i in range(len(tasks)):
+        ts.append(tasks[len(tasks) - i - 1])
     log(tasks=ts)
 
     # V is a temprary value to make browser don't cache js when developed
@@ -30,5 +33,5 @@ def task_new_add():
     form['deadline'] = convert_to_strtime(form)
     log(form, type(form))
 
-    t = Task.new(form)
+    Task.new(form)
     return redirect(url_for('.index'))
