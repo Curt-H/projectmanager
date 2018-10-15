@@ -36,8 +36,8 @@ let bindEventFinish = function () {
 
                     let btn_cancle = e('.cancle', taskPanel)
                     log('CANCLE:', btn_cancle)
-                    btn_cancle.classList.remove('pure-button-primary')
-                    btn_cancle.classList.add('pure-button-disabled')
+                    btn_cancle.classList.remove('pure-button-disabled')
+                    btn_cancle.classList.add('pure-button-primary')
                 })
             }
         }
