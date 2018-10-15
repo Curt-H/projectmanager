@@ -15,7 +15,13 @@ let bindEventFinish = function () {
             log('The object clicked:', self);
 
             const taskPanel = self.closest('.panel');
+            const taskTitle = e('.task-title', taskPanel);
+            const taskTime = e('.task-time', taskPanel);
+            const taskContent = e('.task-content', taskPanel);
             log('The closest object:', taskPanel);
+            log('The closest object:', taskTime);
+            log('The closest object:', taskTitle);
+            log('The closest object:', taskContent);
 
             let taskId = taskPanel.dataset['id'];
             log('Task ID:', taskId);
@@ -29,6 +35,8 @@ let bindEventFinish = function () {
                 log('Sending data')
                 apiTaskFinish(data, function (response) {
                     log(response)
+
+                    // Change button clickable status
                     let btn_finish = e('.finish', taskPanel)
                     log('FINISH: ', btn_finish)
                     btn_finish.classList.remove('pure-button-primary')
@@ -38,6 +46,11 @@ let bindEventFinish = function () {
                     log('CANCLE:', btn_cancle)
                     btn_cancle.classList.remove('pure-button-disabled')
                     btn_cancle.classList.add('pure-button-primary')
+
+                    // Add <s> into text
+                    taskTitle.innerHTML = '<s>' + taskTitle.innerHTML + '</s>';
+                    taskTime.innerHTML = '<s>' + taskTime.innerHTML + '</s>';
+                    taskContent.innerHTML = '<s>' + taskContent.innerHTML + '</s>';
                 })
             }
         }
