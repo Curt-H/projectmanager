@@ -30,10 +30,11 @@ def index():
         ts.append(tasks[len(tasks) - i - 1])
     log(tasks=ts)
 
+    # load config.ini
     config = load_config()
     show_finished_item = config['show_finished_item']
 
-    # V is a temprary value to make browser don't cache js when developed
+    # V is a temprary value to make browser don't cache js when developing
     v = random.randint(0, 9999)
     return render_template('index.html', tasks=ts, v=v, sfi=show_finished_item)
 
