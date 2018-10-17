@@ -41,7 +41,14 @@ def index():
 
 @public.route('/new', methods=['GET'])
 def task_new_view():
-    return render_template('task_new.html')
+    tasks = Task.all()
+    project = set()
+
+    for t in tasks:
+        project.add(t.project)
+
+    log(project=project)
+    return render_template('task_new.html', project=project)
 
 
 @public.route('/new', methods=['POST'])

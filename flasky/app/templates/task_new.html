@@ -22,18 +22,31 @@
             <input id='id-project' class="pure-input-1" name="project" type="text" autocomplete="off">
 
             <div class="pure-g">
-            <label for="id-year" class="pure-u-1">Deadline</label>
-            <input id='id-year' class="pure-input-1-3" name="year" type="text" placeholder="YEAR" autocomplete="off">
-            <input id='id-month' class="pure-input-1-3" name="month" type="text" placeholder="MONTH" autocomplete="off">
-            <input id='id-day' class="pure-input-1-3" name="day" type="text" placeholder="DAY" autocomplete="off">
+                <label for="id-year" class="pure-u-1">Deadline</label>
+                <input id='id-year' class="pure-input-1-4" name="year" type="text" placeholder="YEAR"
+                       autocomplete="off">
+                <input id='id-month' class="pure-input-1-4" name="month" type="text" placeholder="MONTH"
+                       autocomplete="off">
+                <input id='id-day' class="pure-input-1-4" name="day" type="text" placeholder="DAY" autocomplete="off">
+                <button id="id-add-day" class="pure-button" type="button">+</button>
             </div>
             <label for="id-content">Content</label>
-            <textarea id='id-content' class="pure-input-1" name="content" autocomplete="off" rows="20"></textarea>
+            <textarea id='id-content' class="pure-input-1" name="content" autocomplete="off" rows="10"></textarea>
 
             <div class="buttons">
                 <button class="pure-button pure-button-primary" type="submit">SUBMIT</button>
                 <button class="pure-button" type="reset">RESET</button>
             </div>
+            <div id="id-project-list">
+                {% for p in project %}
+                    <p class="project-list">{{ p }}</p>
+                {% endfor %}
+            </div>
         </fieldset>
     </form>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/new.js') }}"></script>
 {% endblock %}
