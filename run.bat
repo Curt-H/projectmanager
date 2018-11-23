@@ -1,2 +1,2 @@
-echo off
+@echo off
 python manage.py
