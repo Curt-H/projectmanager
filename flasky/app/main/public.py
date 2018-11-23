@@ -9,6 +9,19 @@ from flasky.app.models.task import Task
 public = Blueprint('public', __name__)
 
 
+def load_config():
+    with open("config.ini", 'r', encoding='utf8') as f:
+        config = json.load(f)
+    log(config=config)
+    return config
+
+
+def save_config(config):
+    with open("config.ini", 'w', encoding='utf8') as f:
+        json.dump(config, f)
+    log(config=config)
+
+
 @public.route('/', methods=['GET'])
 def index():
     tasks = Task.all()
@@ -17,14 +30,25 @@ def index():
         ts.append(tasks[len(tasks) - i - 1])
     log(tasks=ts)
 
-    # V is a temprary value to make browser don't cache js when developed
+    # load config.ini
+    config = load_config()
+    show_finished_item = config['show_finished_item']
+
+    # V is a temprary value to make browser don't cache js when developing
     v = random.randint(0, 9999)
-    return render_template('index.html', tasks=ts, v=v)
+    return render_template('index.html', tasks=ts, v=v, sfi=show_finished_item)
 
 
 @public.route('/new', methods=['GET'])
 def task_new_view():
-    return render_template('task_new.html')
+    tasks = Task.all()
+    project = set()
+
+    for t in tasks:
+        project.add(t.project)
+
+    log(project=project)
+    return render_template('task_new.html', project=project)
 
 
 @public.route('/new', methods=['POST'])
@@ -35,3 +59,12 @@ def task_new_add():
 
     Task.new(form)
     return redirect(url_for('.index'))
+
+
+@public.route('/showhide', methods=['GET'])
+def task_show_hide():
+    config = load_config()
+    config['show_finished_item'] = not config['show_finished_item']
+    save_config(config)
+
+    return redirect(url_for('public.index'))

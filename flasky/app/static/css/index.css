@@ -21,3 +21,20 @@
 .flex-item {
     background: lightgray;
 }
+
+.project-list {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    border: solid 0.05rem;
+}
+
+.project-list:hover {
+    color: yellow;
+    background-color: black;
+}
+
+#id-add-day {
+    margin: 0.5rem;
+}

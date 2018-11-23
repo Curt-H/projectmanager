@@ -14,23 +14,27 @@
 
 {% block body %}
     <div id="task-list" class="flex-container">
-        {% for task in tasks %}
-            <div class="panel flex-item" data-id="{{ task.id }}">
-                {% if task.finish %}
-                    <p class="task-time"><s>[ID-{{ task.id }}] {{ task.time }}</s></p>
-                    <p class="task-title"><s>{{ task.project }}</s></p>
-                    <p class="task-content"><s>{{ task.content }}</s></p>
-                    <button class="finish pure-button pure-button-disabled" name="finished">FINISH</button>
-                    <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
 
-                {% else %}
-                    <p class="task-time">[ID-{{ task.id }}] {{ task.time }}</p>
-                    <p class="task-title">{{ task.project }}</p>
+        {% for task in tasks %}
+            {% if task.finish %}
+                {% if sfi %}
+                    <div class="panel flex-item" data-id="{{ task.id }}">
+                        <h3 class="task-id"><s>[ID-{{ task.id }}]</s></h3>
+                        <p class="task-title"><s>{{ task.time }}>>>{{ task.project }}</s></p>
+                        <p class="task-content"><s>{{ task.content }}</s></p>
+                        <button class="finish pure-button pure-button-disabled" name="finished">FINISH</button>
+                        <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="panel flex-item" data-id="{{ task.id }}">
+                    <h3 class="task-id">[ID-{{ task.id }}]</h3>
+                    <p class="task-title">{{ task.time }}>>>{{ task.project }}</p>
                     <p class="task-content">{{ task.content }}</p>
                     <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
                     <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

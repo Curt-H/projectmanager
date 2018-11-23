@@ -15,11 +15,10 @@ let bindEventFinish = function () {
             log('The object clicked:', self);
 
             const taskPanel = self.closest('.panel');
+            const taskIdTitle = e('.task-id', taskPanel);
             const taskTitle = e('.task-title', taskPanel);
-            const taskTime = e('.task-time', taskPanel);
             const taskContent = e('.task-content', taskPanel);
             log('The closest object:', taskPanel);
-            log('The closest object:', taskTime);
             log('The closest object:', taskTitle);
             log('The closest object:', taskContent);
 
@@ -48,8 +47,8 @@ let bindEventFinish = function () {
                     btn_cancle.classList.add('pure-button-primary')
 
                     // Add <s> into text
+                    taskIdTitle.innerHTML = '<s>' + taskIdTitle.innerHTML + '</s>';
                     taskTitle.innerHTML = '<s>' + taskTitle.innerHTML + '</s>';
-                    taskTime.innerHTML = '<s>' + taskTime.innerHTML + '</s>';
                     taskContent.innerHTML = '<s>' + taskContent.innerHTML + '</s>';
                 })
             }
