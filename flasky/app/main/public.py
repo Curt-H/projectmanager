@@ -24,19 +24,10 @@ def save_config(config):
 
 @public.route('/', methods=['GET'])
 def index():
+    # load all Tasks
     tasks = Task.all()
-    ts = []
-    for i in range(len(tasks)):
-        ts.append(tasks[len(tasks) - i - 1])
-    log(tasks=ts)
 
-    # load config.ini
-    config = load_config()
-    show_finished_item = config['show_finished_item']
-
-    # V is a temprary value to make browser don't cache js when developing
-    v = random.randint(0, 9999)
-    return render_template('index.html', tasks=ts, v=v, sfi=show_finished_item)
+    return render_template('index.html')
 
 
 @public.route('/new', methods=['GET'])
