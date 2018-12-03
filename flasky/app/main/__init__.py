@@ -23,3 +23,11 @@ def load_form(form):
 
 
 main = Blueprint('main', __name__)
+
+if __name__ == '__main__':
+    test = dict(
+        year=2010,
+        month=1,
+        day=1
+    )
+    print(convert_to_strtime(test))
