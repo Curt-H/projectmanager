@@ -16,25 +16,12 @@
     <div id="task-list" class="flex-container">
 
         {% for task in tasks %}
-            {% if task.finish %}
-                {% if sfi %}
-                    <div class="panel flex-item" data-id="{{ task.id }}">
-                        <h3 class="task-id"><s>[ID-{{ task.id }}]</s></h3>
-                        <p class="task-title"><s>{{ task.time }}>>>{{ task.project }}</s></p>
-                        <p class="task-content"><s>{{ task.content }}</s></p>
-                        <button class="finish pure-button pure-button-disabled" name="finished">FINISH</button>
-                        <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
-                    </div>
-                {% endif %}
-            {% else %}
-                <div class="panel flex-item" data-id="{{ task.id }}">
-                    <h3 class="task-id">[ID-{{ task.id }}]</h3>
-                    <p class="task-title">{{ task.time }}>>>{{ task.project }}</p>
-                    <p class="task-content">{{ task.content }}</p>
-                    <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
-                    <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
-                </div>
-            {% endif %}
+            <div class="panel flex-item" data-id="{{ task.id }}">
+                <h3 class="task-id">[{{ task.id }}]</h3>
+                <p class="task-title">{{ task.time }}>>>{{ task.project }}</p>
+                <button class="finish pure-button pure-button-primary" name="edit">Edit</button>
+                <button class="cancle pure-button pure-button-disabled" name="delete">Delete</button>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
