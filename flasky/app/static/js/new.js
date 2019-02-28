@@ -23,8 +23,8 @@ let bindDayAddClick = function () {
 
 }
 let bindDayDecClick = function () {
-    let addBtn = e('#id-dec-day')
-    addBtn.addEventListener('click', function (t) {
+    let decBtn = e('#id-dec-day')
+    decBtn.addEventListener('click', function (t) {
         let day = e('#id-day')
         day.value = parseInt(day.value) - 1
     })
@@ -50,6 +50,7 @@ let __main = function () {
     getDate()
     bindProjectClick()
     bindDayAddClick()
+    bindDayDecClick()
 }
 
 
