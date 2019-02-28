@@ -29,13 +29,13 @@
                        autocomplete="off">
                 <input id='id-day' class="pure-input-1-4" name="day" type="text" placeholder="DAY" autocomplete="off">
                 <button id="id-add-day" class="pure-button" type="button">+</button>
+                <button id="id-dec-day" class="pure-button" type="button">-</button>
             </div>
             <label for="id-content">Content</label>
             <textarea id='id-content' class="pure-input-1" name="content" autocomplete="off" rows="10"></textarea>
 
             <div class="buttons">
                 <button class="pure-button pure-button-primary" type="submit">SUBMIT</button>
-                <button class="pure-button" type="reset">RESET</button>
             </div>
             <div id="id-project-list">
                 {% for p in project %}
