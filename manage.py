@@ -4,7 +4,7 @@ if __name__ == '__main__':
     app = create_app()
     config = dict(
         debug=True,
-        host='localhost',
+        host='0.0.0.0',
         port=80,
     )
     app.run(**config)
