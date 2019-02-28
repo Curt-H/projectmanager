@@ -27,7 +27,7 @@ def index():
     # load all Tasks
     tasks = Task.all()
 
-    return render_template('index.html')
+    return render_template('index.html', tasks=tasks)
 
 
 @public.route('/new', methods=['GET'])
