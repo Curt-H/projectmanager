@@ -45,9 +45,8 @@ let bindEventFinish = function () {
                     btn_cancle.classList.add('pure-button-primary')
 
                     // Add <s> into text
-                    taskIdTitle.innerHTML = '<s>' + taskIdTitle.innerHTML + '</s>';
-                    taskTitle.innerHTML = '<s>' + taskTitle.innerHTML + '</s>';
-                    taskContent.innerHTML = '<s>' + taskContent.innerHTML + '</s>';
+                    taskIdTitle.classList.add('fin')
+                    taskTitle.classList.add('fin')
                 })
             }
         }
