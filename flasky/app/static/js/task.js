@@ -39,11 +39,6 @@ let bindEventFinish = function () {
                     btn_finish.classList.remove('pure-button-primary');
                     btn_finish.classList.add('pure-button-disabled');
 
-                    let btn_cancle = e('.cancle', taskPanel);
-                    log('CANCLE:', btn_cancle);
-                    btn_cancle.classList.remove('pure-button-disabled');
-                    btn_cancle.classList.add('pure-button-primary');
-
                     // Add <s> into text
                     taskIdTitle.classList.add('fin');
                     taskTitle.classList.add('fin')
