@@ -26,8 +26,9 @@ def save_config(config):
 def index():
     # load all Tasks
     tasks = Task.all()
+    config = load_config()
 
-    return render_template('index.html', tasks=tasks)
+    return render_template('index.html', tasks=tasks, config=config)
 
 
 @public.route('/new', methods=['GET'])

@@ -24,7 +24,7 @@
                 <button class="finish pure-button pure-button-primary" name="edit">CLEAR</button>
                 <button class="cancle pure-button pure-button-disabled" name="delete">REMOVE</button>
             </div>
-            {% else %}
+            {% elif config.show_finished_item %}
                 <div class="panel flex-item" data-id="{{ task.id }}">
                     <h3 class="panel-title panel-assets fin">[{{ task.id }}] {{ task.project }}</h3><p class="panel-assets">{{ task.creat_time }}</p>
                     <hr class="panel-assets"/>
