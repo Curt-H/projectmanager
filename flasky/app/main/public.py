@@ -27,8 +27,9 @@ def index():
     # load all Tasks
     tasks = Task.all()
     config = load_config()
+    v = random.randint(1, 10086)
 
-    return render_template('index.html', tasks=tasks, config=config)
+    return render_template('index.html', tasks=tasks, config=config, v=v)
 
 
 @public.route('/new', methods=['GET'])
