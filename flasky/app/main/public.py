@@ -47,7 +47,7 @@ def task_new_view():
 def task_new_add():
     form = json.loads(json.dumps(request.form))
     form['deadline'] = convert_to_strtime(form)
-    form['creat_time']= format_time()[:-1]
+    form['creat_time']= format_time(time_format='[%Y-%m-%d-%a-%H:%M:%S]')
     log(form, type(form))
 
     Task.new(form)
