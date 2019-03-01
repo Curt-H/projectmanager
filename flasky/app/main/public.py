@@ -3,7 +3,7 @@ import random
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from flasky.app.main import convert_to_strtime
-from flasky.app import log
+from flasky.app.util import log, format_time
 from flasky.app.models.task import Task
 
 public = Blueprint('public', __name__)
@@ -46,6 +46,7 @@ def task_new_view():
 def task_new_add():
     form = json.loads(json.dumps(request.form))
     form['deadline'] = convert_to_strtime(form)
+    form['creat_time']= format_time()[:-1]
     log(form, type(form))
 
     Task.new(form)

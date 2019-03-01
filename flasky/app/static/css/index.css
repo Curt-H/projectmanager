@@ -5,8 +5,8 @@
 
 .panel {
     border: 1px solid;
-    margin: 10px;
-    padding: 3%;
+    margin: 2px;
+    padding: 2px 1rem;
 }
 
 .flex-container {
@@ -41,4 +41,22 @@
 
 .adbtn {
     margin: 0.5rem;
+}
+
+.panel-assets {
+    margin: 2px;
+}
+
+p.panel-assets {
+    float: right;
+}
+h3.panel-assets {
+    float: left;
+}
+
+hr.panel-assets {
+    clear: both;
+    background-color: #FFF;
+    /*border: none;*/
+    border-style: dashed;
 }

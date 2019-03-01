@@ -15,12 +15,10 @@ let bindEventFinish = function () {
             log('The object clicked:', self);
 
             const taskPanel = self.closest('.panel');
-            const taskIdTitle = e('.task-id', taskPanel);
-            const taskTitle = e('.task-title', taskPanel);
-            const taskContent = e('.task-content', taskPanel);
+            const taskIdTitle = e('.panel-title', taskPanel);
+            const taskTitle = e('.panel-content', taskPanel);
             log('The closest object:', taskPanel);
             log('The closest object:', taskTitle);
-            log('The closest object:', taskContent);
 
             let taskId = taskPanel.dataset['id'];
             log('Task ID:', taskId);
