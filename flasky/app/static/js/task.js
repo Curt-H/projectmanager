@@ -66,8 +66,12 @@ let bindEventRemove = function () {
             log('The object clicked:', self);
 
             let taskPanel = self.closest('.panel');
-            log(taskPanel)
-            taskPanel.remove()
+            taskPanel.classList.add('move-out')
+            setTimeout(function () {
+                taskPanel.remove()
+                log('1s')
+            },1000)
+
         }
     })
 };

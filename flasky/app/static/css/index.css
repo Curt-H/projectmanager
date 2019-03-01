@@ -50,6 +50,7 @@
 p.panel-assets {
     float: right;
 }
+
 h3.panel-assets {
     float: left;
 }
@@ -63,5 +64,18 @@ hr.panel-assets {
 
 .fin {
     color: gray;
-    text-decoration:line-through;
+    text-decoration: line-through;
+}
+
+.move-out {
+    animation: remove 1s;
+}
+
+@keyframes remove {
+    25% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
