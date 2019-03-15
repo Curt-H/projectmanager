@@ -20,12 +20,20 @@ let bindDayAddClick = function () {
         let day = e('#id-day')
         day.value = parseInt(day.value) + 1
     })
+
+}
+let bindDayDecClick = function () {
+    let decBtn = e('#id-dec-day')
+    decBtn.addEventListener('click', function (t) {
+        let day = e('#id-day')
+        day.value = parseInt(day.value) - 1
+    })
 }
 
 let getDate = function () {
     let myDate = new Date()
     yy = myDate.getFullYear()
-    mm = myDate.getMonth() +1
+    mm = myDate.getMonth() + 1
     dd = myDate.getDate()
 
     let formYY = e('#id-year')
@@ -42,6 +50,7 @@ let __main = function () {
     getDate()
     bindProjectClick()
     bindDayAddClick()
+    bindDayDecClick()
 }
 
 

@@ -109,3 +109,4 @@ venv.bak/
 test.py
 config.ini
 *.ini
+config.ini

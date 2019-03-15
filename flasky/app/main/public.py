@@ -3,7 +3,7 @@ import random
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from flasky.app.main import convert_to_strtime
-from flasky.app import log
+from flasky.app.util import log, format_time
 from flasky.app.models.task import Task
 
 public = Blueprint('public', __name__)
@@ -24,19 +24,12 @@ def save_config(config):
 
 @public.route('/', methods=['GET'])
 def index():
+    # load all Tasks
     tasks = Task.all()
-    ts = []
-    for i in range(len(tasks)):
-        ts.append(tasks[len(tasks) - i - 1])
-    log(tasks=ts)
-
-    # load config.ini
     config = load_config()
-    show_finished_item = config['show_finished_item']
+    v = random.randint(1, 10086)
 
-    # V is a temprary value to make browser don't cache js when developing
-    v = random.randint(0, 9999)
-    return render_template('index.html', tasks=ts, v=v, sfi=show_finished_item)
+    return render_template('index.html', tasks=tasks, config=config, v=v)
 
 
 @public.route('/new', methods=['GET'])
@@ -55,6 +48,7 @@ def task_new_view():
 def task_new_add():
     form = json.loads(json.dumps(request.form))
     form['deadline'] = convert_to_strtime(form)
+    form['creat_time']= format_time(time_format='[%Y-%m-%d-%a-%H:%M:%S]')
     log(form, type(form))
 
     Task.new(form)

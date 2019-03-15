@@ -16,25 +16,26 @@
     <div id="task-list" class="flex-container">
 
         {% for task in tasks %}
-            {% if task.finish %}
-                {% if sfi %}
-                    <div class="panel flex-item" data-id="{{ task.id }}">
-                        <h3 class="task-id"><s>[ID-{{ task.id }}]</s></h3>
-                        <p class="task-title"><s>{{ task.time }}>>>{{ task.project }}</s></p>
-                        <p class="task-content"><s>{{ task.content }}</s></p>
-                        <button class="finish pure-button pure-button-disabled" name="finished">FINISH</button>
-                        <button class="cancle pure-button pure-button-primary" name="cancle">CANCLE</button>
-                    </div>
-                {% endif %}
-            {% else %}
+            {% if not task.finish %}
                 <div class="panel flex-item" data-id="{{ task.id }}">
-                    <h3 class="task-id">[ID-{{ task.id }}]</h3>
-                    <p class="task-title">{{ task.time }}>>>{{ task.project }}</p>
-                    <p class="task-content">{{ task.content }}</p>
-                    <button class="finish pure-button pure-button-primary" name="finished">FINISH</button>
-                    <button class="cancle pure-button pure-button-disabled" name="cancle">CANCLE</button>
+                    <h3 class="panel-title panel-assets">[{{ task.id }}] {{ task.project }}</h3>
+                    <button class="cancle" name="delete">X</button>
+                    <p class="panel-assets">{{ task.creat_time }}</p>
+                    <hr class="panel-assets"/>
+                    <p class="panel-content">{{ task.task_content }}</p>
+                    <button class="finish pure-button pure-button-primary" name="edit">CLEAR</button>
+                </div>>
+            {% elif config.show_finished_item %}
+                <div class="panel flex-item" data-id="{{ task.id }}">
+                    <h3 class="panel-title panel-assets fin">[{{ task.id }}] {{ task.project }}</h3>
+                    <button class="cancle" name="delete">X</button>
+                    <p class="panel-assets">{{ task.creat_time }}</p>
+                    <hr class="panel-assets"/>
+                    <p class="panel-content fin">{{ task.task_content }}</p>
+                    <button class="finish pure-button pure-button-disabled" name="edit">CLEAR</button>
                 </div>
             {% endif %}
+
         {% endfor %}
     </div>
 {% endblock %}

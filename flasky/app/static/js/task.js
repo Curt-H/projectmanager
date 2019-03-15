@@ -14,13 +14,11 @@ let bindEventFinish = function () {
         if (self.classList.contains('finish')) {
             log('The object clicked:', self);
 
-            const taskPanel = self.closest('.panel');
-            const taskIdTitle = e('.task-id', taskPanel);
-            const taskTitle = e('.task-title', taskPanel);
-            const taskContent = e('.task-content', taskPanel);
+            let taskPanel = self.closest('.panel');
+            let taskIdTitle = e('.panel-title', taskPanel);
+            let taskTitle = e('.panel-content', taskPanel);
             log('The closest object:', taskPanel);
             log('The closest object:', taskTitle);
-            log('The closest object:', taskContent);
 
             let taskId = taskPanel.dataset['id'];
             log('Task ID:', taskId);
@@ -41,23 +39,41 @@ let bindEventFinish = function () {
                     btn_finish.classList.remove('pure-button-primary');
                     btn_finish.classList.add('pure-button-disabled');
 
-                    let btn_cancle = e('.cancle', taskPanel);
-                    log('CANCLE:', btn_cancle);
-                    btn_cancle.classList.remove('pure-button-disabled');
-                    btn_cancle.classList.add('pure-button-primary');
-
                     // Add <s> into text
-                    taskIdTitle.innerHTML = '<s>' + taskIdTitle.innerHTML + '</s>';
-                    taskTitle.innerHTML = '<s>' + taskTitle.innerHTML + '</s>';
-                    taskContent.innerHTML = '<s>' + taskContent.innerHTML + '</s>';
+                    taskIdTitle.classList.add('fin');
+                    taskTitle.classList.add('fin')
                 })
             }
         }
     })
 };
 
+let bindEventRemove = function () {
+    let taskList = e('#task-list');
+
+    // Event trusteeship
+    taskList.addEventListener('click', function (t) {
+        let self = t.target;
+
+        // Get task panel object
+        log(self.classList);
+        if (self.classList.contains('cancle')) {
+            log('The object clicked:', self);
+
+            let taskPanel = self.closest('.panel');
+            taskPanel.classList.add('move-out')
+            setTimeout(function () {
+                taskPanel.remove()
+                log('1s')
+            },1000)
+
+        }
+    })
+};
+
 let __main = function () {
     bindEventFinish();
+    bindEventRemove();
 };
 
 __main();

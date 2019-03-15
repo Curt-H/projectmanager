@@ -5,8 +5,8 @@
 
 .panel {
     border: 1px solid;
-    margin: 10px;
-    padding: 3%;
+    margin: 2px;
+    padding: 2px 1rem;
 }
 
 .flex-container {
@@ -37,4 +37,58 @@
 
 #id-add-day {
     margin: 0.5rem;
+}
+
+.adbtn {
+    margin: 0.5rem;
+}
+
+.panel-assets {
+    margin: 2px;
+}
+
+p.panel-assets {
+    float: right;
+}
+
+h3.panel-assets {
+    float: left;
+}
+
+hr.panel-assets {
+    clear: both;
+    background-color: #FFF;
+    /*border: none;*/
+    border-style: dashed;
+}
+
+.fin {
+    color: gray;
+    text-decoration: line-through;
+}
+
+.move-out {
+    animation: remove 1s;
+}
+
+@keyframes remove {
+    25% {
+        transform: translateX(10%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.cancle {
+    background-color: lightgray;
+    display: inline-block;
+    border: none;
+    float: right;
+    margin: 1px;
+    margin-left: 5rem;
+}
+
+.cancle:hover {
+    background-color: red;
 }
