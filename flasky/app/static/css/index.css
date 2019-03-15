@@ -59,7 +59,7 @@ hr.panel-assets {
     clear: both;
     background-color: #FFF;
     /*border: none;*/
-    border-style: dashed;
+    border-style: double;
 }
 
 .fin {
@@ -91,4 +91,12 @@ hr.panel-assets {
 
 .cancle:hover {
     background-color: red;
+}
+
+.deadline {
+    display: inline-block;
+    background-color: red;
+    color: yellow;
+    padding-left: 5px;
+    padding-right: 5px;
 }

@@ -26,6 +26,9 @@ def save_config(config):
 def index():
     # load all Tasks
     tasks = Task.all()
+    for t in tasks:
+        t.deadline = format_time(time_format='[%Y-%m-%d-%a]')
+
     config = load_config()
     v = random.randint(1, 10086)
 
@@ -48,7 +51,7 @@ def task_new_view():
 def task_new_add():
     form = json.loads(json.dumps(request.form))
     form['deadline'] = convert_to_strtime(form)
-    form['creat_time']= format_time(time_format='[%Y-%m-%d-%a-%H:%M:%S]')
+    form['creat_time'] = format_time(time_format='[%Y-%m-%d-%a-%H:%M:%S]')
     log(form, type(form))
 
     Task.new(form)
