@@ -1,3 +1,6 @@
+html {
+    background-color: black;
+}
 
 .tasks {
     margin-left: 25%;
@@ -7,6 +10,7 @@
     border: 1px solid;
     margin: 2px;
     padding: 2px 1rem;
+    border-radius: 1rem;
 }
 
 .flex-container {
@@ -87,6 +91,7 @@ hr.panel-assets {
     float: right;
     margin: 1px;
     margin-left: 5rem;
+    border-radius: 1rem;
 }
 
 .cancle:hover {
