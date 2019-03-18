@@ -25,9 +25,16 @@ def save_config(config):
 @public.route('/', methods=['GET'])
 def index():
     # load all Tasks
-    tasks = Task.all()
-    for t in tasks:
+    ts = Task.all()
+    for t in ts:
         t.deadline = format_time(time_format='[%Y-%m-%d-%a]')
+
+    tasks = list()
+    projects = get_project_list()
+    for p in projects:
+        for t in ts:
+            if t.project == p:
+                tasks.append(t)
 
     config = load_config()
     v = random.randint(1, 10086)
@@ -37,11 +44,7 @@ def index():
 
 @public.route('/new', methods=['GET'])
 def task_new_view():
-    tasks = Task.all()
-    project = set()
-
-    for t in tasks:
-        project.add(t.project)
+    project = get_project_list()
 
     log(project=project)
     return render_template('task_new.html', project=project)
@@ -65,3 +68,11 @@ def task_show_hide():
     save_config(config)
 
     return redirect(url_for('public.index'))
+
+
+def get_project_list():
+    tasks = Task.all()
+    project = set()
+    for t in tasks:
+        project.add(t.project)
+    return project
