@@ -44,6 +44,7 @@ let bindEventFinish = function () {
                     taskTitle.classList.add('fin')
                 })
             }
+            RemoveItemWithAnime(taskPanel);
         }
     })
 };
@@ -61,15 +62,18 @@ let bindEventRemove = function () {
             log('The object clicked:', self);
 
             let taskPanel = self.closest('.panel');
-            taskPanel.classList.add('move-out')
-            setTimeout(function () {
-                taskPanel.remove()
-                log('1s')
-            },1000)
-
+            RemoveItemWithAnime(taskPanel)
         }
     })
 };
+
+let RemoveItemWithAnime = function (e) {
+    e.classList.add('move-out')
+    setTimeout(function () {
+        e.remove()
+        log('1s')
+    }, 1000)
+}
 
 let __main = function () {
     bindEventFinish();
