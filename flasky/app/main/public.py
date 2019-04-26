@@ -27,7 +27,10 @@ def index():
     # load all Tasks
     ts = Task.all()
     for t in ts:
-        t.deadline = format_time(time_format='[%Y-%m-%d-%a]')
+        log(t.deadline)
+        log(type(t.deadline))
+        t.deadline = format_time(t.deadline, '[%Y-%m-%d-%a]')
+        log(t.deadline)
 
     tasks = list()
     projects = get_project_list()
