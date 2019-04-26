@@ -1,7 +1,9 @@
 from time import time, localtime, strftime
 
 
-def format_time(now=localtime(), time_format=''):
+def format_time(now=time(), time_format=''):
+    now = localtime(now)
+
     if time_format == '':
         time_format = '[%Y|%m|%d|%a|%H:%M:%S]:'
     return strftime(time_format, now)

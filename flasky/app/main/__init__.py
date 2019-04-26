@@ -3,6 +3,8 @@ Package main is for routers, so put all your router func in here
 and public routers like index router could add below.
 But I recommended just add some tools here
 """
+import time
+
 from flask import Blueprint
 import json
 
@@ -15,7 +17,7 @@ def convert_to_strtime(form):
         0, 0, 0, 0, 0, 0
     )
 
-    return strtime
+    return time.mktime(strtime)
 
 
 def load_form(form):
