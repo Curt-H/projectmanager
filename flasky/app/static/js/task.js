@@ -3,6 +3,12 @@ let apiTaskFinish = function (data, callback) {
     ajax('POST', path, data, callback)
 };
 
+let apiTaskDelete = function (data, callback) {
+    let path = '/api/task/delete';
+    ajax('POST', path, data, callback)
+};
+
+// Dealing the finish button event
 let bindEventFinish = function () {
     let taskList = e('#task-list');
 
@@ -41,10 +47,10 @@ let bindEventFinish = function () {
 
                     // Add <s> into text
                     taskIdTitle.classList.add('fin');
-                    taskTitle.classList.add('fin')
+                    taskTitle.classList.add('fin');
+                    RemoveItemWithAnime(taskPanel);
                 })
             }
-            RemoveItemWithAnime(taskPanel);
         }
     })
 };
@@ -59,21 +65,34 @@ let bindEventRemove = function () {
         // Get task panel object
         log(self.classList);
         if (self.classList.contains('cancle')) {
-            log('The object clicked:', self);
 
-            let taskPanel = self.closest('.panel');
-            RemoveItemWithAnime(taskPanel)
+            let responseMsg = confirm('DELETED?');
+            if (responseMsg) {
+                let task = self.closest('.panel');
+                let task_id = task.dataset['id'];
+
+                log('The object clicked:', self);
+                RemoveItemWithAnime(task);
+
+                let data = {
+                    id: task_id,
+            };
+                apiTaskDelete(data, function () {
+                    log('Deleting finished')
+                })
+            }
+
         }
     })
 };
 
 let RemoveItemWithAnime = function (e) {
-    e.classList.add('move-out')
+    e.classList.add('move-out');
     setTimeout(function () {
-        e.remove()
+        e.remove();
         log('1s')
     }, 1000)
-}
+};
 
 let __main = function () {
     bindEventFinish();
