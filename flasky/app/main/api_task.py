@@ -16,3 +16,15 @@ def api_task_finish():
 
     result = 'finished'
     return jsonify(result)
+
+
+@api_task.route('/api/task/delete', methods=['POST'])
+def api_task_delete():
+    form = request.get_json()
+    log(form)
+    task = Task.find_by(id=int(form['id']))
+    log(task)
+    Task.delete_by(id=int(form['id']))
+
+    result = 'finished'
+    return jsonify(result)

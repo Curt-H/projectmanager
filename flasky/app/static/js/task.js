@@ -77,7 +77,9 @@ let bindEventRemove = function () {
                 let data = {
                     id: task_id,
             };
-                apiTaskDelete(data)
+                apiTaskDelete(data, function () {
+                    log('Deleting finished')
+                })
             }
 
         }
