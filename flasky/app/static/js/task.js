@@ -3,6 +3,7 @@ let apiTaskFinish = function (data, callback) {
     ajax('POST', path, data, callback)
 };
 
+// Dealing the finish button event
 let bindEventFinish = function () {
     let taskList = e('#task-list');
 
@@ -42,9 +43,9 @@ let bindEventFinish = function () {
                     // Add <s> into text
                     taskIdTitle.classList.add('fin');
                     taskTitle.classList.add('fin')
+                    RemoveItemWithAnime(taskPanel);
                 })
             }
-            RemoveItemWithAnime(taskPanel);
         }
     })
 };
@@ -68,12 +69,12 @@ let bindEventRemove = function () {
 };
 
 let RemoveItemWithAnime = function (e) {
-    e.classList.add('move-out')
+    e.classList.add('move-out');
     setTimeout(function () {
-        e.remove()
+        e.remove();
         log('1s')
     }, 1000)
-}
+};
 
 let __main = function () {
     bindEventFinish();
