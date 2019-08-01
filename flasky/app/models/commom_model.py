@@ -1,4 +1,5 @@
 from flasky.app.models import BaseModel
+from time import time
 
 
 class Work(BaseModel):
@@ -32,3 +33,11 @@ class Session(BaseModel):
         super(Session, self).__init__(form)
         self.user_id = form.get('user_id')
         self.expire_time = form.get('expire_time')
+
+    def check_if_expired(self):
+        now = time()
+        if now > self.expire_time:
+            self.delete_by(id=self.id)
+            return True
+        else:
+            return False
