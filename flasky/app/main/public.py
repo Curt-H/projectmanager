@@ -5,7 +5,7 @@ import time
 from flask import Blueprint, render_template, request, redirect, url_for
 from flasky.app.main import convert_to_strtime
 from flasky.app.util import log, format_time
-from flasky.app.models.task import Task
+from flasky.app.models.commom_model import Task
 
 public = Blueprint('public', __name__)
 
