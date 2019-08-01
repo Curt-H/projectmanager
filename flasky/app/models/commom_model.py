@@ -25,3 +25,10 @@ class User(BaseModel):
         super(User, self).__init__(form)
         self.username = form.get('username')
         self.password = form.get('password')
+
+
+class Session(BaseModel):
+    def __init__(self, form):
+        super(Session, self).__init__(form)
+        self.user_id = form.get('user_id')
+        self.expire_time = form.get('expire_time')
