@@ -7,10 +7,11 @@ from flasky.app.main.api_task import api_task
 
 def create_app():
     app = Flask(__name__)
-    app.register_blueprint(main_route)
+    # app.register_blueprint(main_route)
     app.register_blueprint(public_route)
-    app.register_blueprint(api_task)
+    # app.register_blueprint(api_task)
     return app
+
 
 
 if __name__ == '__main__':

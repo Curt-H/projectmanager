@@ -4,6 +4,7 @@ and public routers like index router could add below.
 But I recommended just add some tools here
 """
 import time
+from functools import wraps
 
 from flask import Blueprint
 import json
@@ -18,6 +19,15 @@ def convert_to_strtime(form):
     )
 
     return time.mktime(strtime)
+
+
+def login_required(f):
+    @wraps(f)
+    def wrapper(*args):
+        print('This a deco demo')
+        return f(*args)
+
+    return wrapper
 
 
 def load_form(form):

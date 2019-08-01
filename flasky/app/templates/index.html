@@ -13,31 +13,7 @@
 {% endblock %}
 
 {% block body %}
-    <div id="task-list" class="flex-container">
-
-        {% for task in tasks %}
-            {% if not task.finish %}
-                <div class="panel flex-item" data-id="{{ task.id }}">
-                    <h3 class="panel-title panel-assets">[{{ task.id }}] {{ task.project }}</h3>
-                    <button class="cancle" name="delete">X</button>
-                    <p class="panel-assets deadline">{{ task.deadline }}</p>
-                    <hr class="panel-assets"/>
-                    <p class="panel-content">{{ task.task_content }}</p>
-                    <button class="finish pure-button pure-button-primary" name="edit">CLEAR</button>
-                </div>>
-            {% elif config.show_finished_item %}
-                <div class="panel flex-item" data-id="{{ task.id }}">
-                    <h3 class="panel-title panel-assets fin">[{{ task.id }}] {{ task.project }}</h3>
-                    <button class="cancle" name="delete">X</button>
-                    <p class="panel-assets">{{ task.deadline }}</p>
-                    <hr class="panel-assets"/>
-                    <p class="panel-content fin">{{ task.task_content }}</p>
-                    <button class="finish pure-button pure-button-disabled" name="edit">CLEAR</button>
-                </div>
-            {% endif %}
-
-        {% endfor %}
-    </div>
+    TEST
 {% endblock %}
 
 {% block script %}

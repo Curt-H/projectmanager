@@ -3,29 +3,18 @@ import random
 import time
 
 from flask import Blueprint, render_template, request, redirect, url_for
-from flasky.app.main import convert_to_strtime
+from flasky.app.main import convert_to_strtime, login_required
 from flasky.app.util import log, format_time
-from flasky.app.models.commom_model import Task
+
+# from flasky.app.models.commom_model import Task
 
 public = Blueprint('public', __name__)
 
 
-# def load_config():
-#     with open("config.ini", 'r', encoding='utf8') as f:
-#         config = json.load(f)
-#     log(config=config)
-#     return config
-
-
-# def save_config(config):
-#     with open("config.ini", 'w', encoding='utf8') as f:
-#         json.dump(config, f)
-#     log(config=config)
-
-
 @public.route('/', methods=['GET'])
+@login_required
 def index():
-    # load all Tasks
+    a = 0
     # ts = Task.all()
     # for t in ts:
     #     log(t.deadline)
@@ -43,7 +32,19 @@ def index():
     # config = load_config()
     # v = random.randint(1, 10086)
     #
-    # return render_template('index.html', tasks=tasks, config=config, v=v)
+    return render_template('index.html')
+
+# def load_config():
+#     with open("config.ini", 'r', encoding='utf8') as f:
+#         config = json.load(f)
+#     log(config=config)
+#     return config
+
+
+# def save_config(config):
+#     with open("config.ini", 'w', encoding='utf8') as f:
+#         json.dump(config, f)
+#     log(config=config)
 
 
 # @public.route('/new', methods=['GET'])
