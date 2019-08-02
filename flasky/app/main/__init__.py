@@ -6,7 +6,7 @@ But I recommended just add some tools here
 import time
 from functools import wraps
 
-from flask import Blueprint, redirect, url_for, request
+from flask import Blueprint, redirect, url_for, request, make_response, render_template
 import json
 
 from flasky.app import log
@@ -43,9 +43,15 @@ def login_required(f):
     def wrapper(*args):
         log('Check weather logged')
 
+        for k in request.args:
+            print(k, request.args[k])
+            dd = request.args.to_dict()
+            ee = request.form
+            ff = request.cookies
+            print(dd, ee, ff)
         u = current_user()
-        if u is None:
-            return f(u)
+        if u is None and len(request.args) == 0:
+            return redirect(url_for('public.log_in'))
         else:
             return f(u)
 
@@ -54,6 +60,18 @@ def login_required(f):
 
 def load_form(form):
     return json.loads(json.dumps(form))
+
+
+def response(template, cookie=None, **kwargs):
+    t = template
+    c = cookie
+
+    re = make_response(render_template(t, **kwargs))
+    if c is not None:
+        for k, v in c.items():
+            re.set_cookie(k, str(v))
+
+    return re
 
 
 main = Blueprint('main', __name__)

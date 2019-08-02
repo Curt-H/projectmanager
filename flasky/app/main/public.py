@@ -3,7 +3,7 @@ import random
 import time
 
 from flask import Blueprint, render_template, request, redirect, url_for
-from flasky.app.main import convert_to_strtime, login_required
+from flasky.app.main import convert_to_strtime, login_required, response
 from flasky.app.util import log, format_time
 
 # from flasky.app.models.commom_model import Task
@@ -19,29 +19,32 @@ def index(user=None):
         u = {
             'username': 'GUEST',
         }
-        # ts = Task.all()
-        # for t in ts:
-        #     log(t.deadline)
-        #     log(type(t.deadline))
-        #     t.deadline = format_time(t.deadline, '[%Y-%m-%d-%a]')
-        #     log(t.deadline)
-        #
-        # tasks = list()
-        # projects = get_project_list()
-        # for p in projects:
-        #     for t in ts:
-        #         if t.project == p:
-        #             tasks.append(t)
-        #
-        # config = load_config()
-        # v = random.randint(1, 10086)
-        #
-        return render_template('index.html', u=u, a='Hello world')
+    cookie = {
+        'a': 1,
+    }
+    # ts = Task.all()
+    # for t in ts:
+    #     log(t.deadline)
+    #     log(type(t.deadline))
+    #     t.deadline = format_time(t.deadline, '[%Y-%m-%d-%a]')
+    #     log(t.deadline)
+    #
+    # tasks = list()
+    # projects = get_project_list()
+    # for p in projects:
+    #     for t in ts:
+    #         if t.project == p:
+    #             tasks.append(t)
+    #
+    # config = load_config()
+    # v = random.randint(1, 10086)
+    #
+    return response('index.html', cookie=cookie, u=u, a='Hello world', t=request.args)
 
 
 @public.route('/error', methods=['GET'])
 def log_in():
-    return 'WRONG'
+    return render_template('log_in.html')
 
     # def load_config():
     #     with open("config.ini", 'r', encoding='utf8') as f:

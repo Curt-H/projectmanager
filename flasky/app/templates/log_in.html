@@ -13,9 +13,18 @@
 {% endblock %}
 
 {% block body %}
-    <p>{{ a }}</p>
-    <p>{{ u.username }}</p>
-    <p>{{ t }}</p>
+    <form method="get" action="{{ url_for('public.index') }}">
+        <p>Please log in</p>
+        <label>
+            Username
+            <input type="text" name="username">
+        </label>
+        <label>
+            Password
+            <input type="text" name="password">
+        </label>
+        <button type="submit">OK</button>
+    </form>
 {% endblock %}
 
 {% block script %}
