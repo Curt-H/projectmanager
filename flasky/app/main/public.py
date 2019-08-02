@@ -2,8 +2,8 @@ import json
 import random
 import time
 
-from flask import Blueprint, render_template, request, redirect, url_for
-from flasky.app.main import convert_to_strtime, login_required, response
+from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flasky.app.main import convert_to_strtime, login_required, response, validate_password
 from flasky.app.models.commom_model import User
 from flasky.app.util import log, format_time
 
@@ -46,3 +46,17 @@ def validate_login():
 @public.route('/register', methods=['GET'])
 def register(un='', pw=''):
     return response('register.html', un=un, pw=pw)
+
+
+@public.route('/register', methods=['POST'])
+def validate_register():
+    un = request.form.get('username')
+    pw = request.form.get('password')
+
+    pw_check, wrong = validate_password(pw)
+    if pw_check:
+        flash('SUCCESS')
+        return response('register.html', un=un, pw=pw)
+    else:
+        flash(f'[{wrong}] is a invalid word')
+        return response('register.html', un=un, pw=pw)

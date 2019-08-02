@@ -52,6 +52,25 @@ def login_required(f):
     return wrapper
 
 
+def validate_password(password):
+    p = password
+    check_point = 0
+
+    for i in p:
+        if ord(i) in range(97, 123):
+            check_point += 1
+        if ord(i) in range(65, 91):
+            check_point += 1
+        if ord(i) in range(48, 58):
+            check_point += 1
+        if i == '_':
+            check_point += 1
+        if check_point == 0:
+            return False, i
+        check_point = 0
+    return True, None
+
+
 def load_form(form):
     return json.loads(json.dumps(form))
 

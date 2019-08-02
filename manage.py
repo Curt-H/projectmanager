@@ -7,4 +7,5 @@ if __name__ == '__main__':
         host='localhost',
         port=80,
     )
+    app.config['SECRET_KEY'] = 'FUCK YOU'
     app.run(**config)

@@ -14,7 +14,16 @@
 {% endblock %}
 
 {% block body %}
-    <form method="post" action="{{ url_for('public.register') }}">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flash">
+                {% for message in messages %}
+                        <strong>{{ message }}</strong></div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('public.validate_register') }}">
         <p>Get yourself a new account</p>
         <label>
             <p>Username</p>
