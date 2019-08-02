@@ -41,3 +41,8 @@ def validate_login():
         return 'WRONG PASSWORD'
     else:
         return redirect(url_for('public.index', u=user))
+
+
+@public.route('/register', methods=['GET'])
+def register(un='', pw=''):
+    return response('register.html', un=un, pw=pw)

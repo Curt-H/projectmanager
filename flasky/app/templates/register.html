@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}项目管理器{% endblock %}
+
+{% block css %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grids-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grids-responsive-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons-core-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="{{ url_for('public.register') }}">
+        <p>Get yourself a new account</p>
+        <label>
+            <p>Username</p>
+            <input type="text" name="username" value={{ un }}>
+        </label>
+        <label>
+            <p>Password</p>
+            <input type="password" name="password" value="{{ pw }}">
+        </label>
+        <button type="submit">OK</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/base.js') }}?v={{ v }}"></script>
+    <script src="{{ url_for('static', filename='js/task.js') }}?v={{ v }}"></script>
+    <script src="{{ url_for('static', filename='js/clock.js') }}?v={{ v }}"></script>
+{% endblock %}
