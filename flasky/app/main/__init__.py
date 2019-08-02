@@ -43,14 +43,8 @@ def login_required(f):
     def wrapper(*args):
         log('Check weather logged')
 
-        for k in request.args:
-            print(k, request.args[k])
-            dd = request.args.to_dict()
-            ee = request.form
-            ff = request.cookies
-            print(dd, ee, ff)
         u = current_user()
-        if u is None and len(request.args) == 0:
+        if u is None:
             return redirect(url_for('public.log_in'))
         else:
             return f(u)

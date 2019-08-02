@@ -14,11 +14,6 @@ label {
     display: block;
 }
 
-form {
-    margin: 0 auto;
-    width: 80%;
-}
-
 fieldset {
 }
 
@@ -30,4 +25,8 @@ fieldset {
 
 .buttons {
     padding: 0.5rem;
+}
+
+.label {
+    display: block;
 }

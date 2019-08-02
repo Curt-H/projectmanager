@@ -10,18 +10,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/grids-responsive-min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons-core-min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
 {% endblock %}
 
 {% block body %}
-    <form method="get" action="{{ url_for('public.index') }}">
+    <form method="post" action="{{ url_for('public.index') }}">
         <p>Please log in</p>
         <label>
-            Username
+            <p>Username</p>
             <input type="text" name="username">
         </label>
         <label>
-            Password
-            <input type="text" name="password">
+            <p>Password</p>
+            <input type="password" name="password">
         </label>
         <button type="submit">OK</button>
     </form>
