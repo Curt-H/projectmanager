@@ -41,7 +41,7 @@ def current_user():
 def login_required(f):
     @wraps(f)
     def wrapper(*args):
-        log('Check weather logged')
+        log('Check wheather logged')
 
         u = current_user()
         if u is None:
