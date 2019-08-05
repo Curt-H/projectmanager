@@ -26,6 +26,9 @@ class User(BaseModel):
         super(User, self).__init__(form)
         self.username = form.get('username')
         self.password = form.get('password')
+        # if not authorized, account can not be used
+        self.authorize = form.get('authorize')
+        self.role = form.get('role', 'normal')
 
 
 class Session(BaseModel):
